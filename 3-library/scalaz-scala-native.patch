@@ -1,0 +1,42 @@
+diff --git a/project/build.scala b/project/build.scala
+index 2fceebe..51c6fb4 100644
+--- a/project/build.scala
++++ b/project/build.scala
+@@ -29,6 +29,8 @@ import org.scalajs.sbtplugin.ScalaJSPlugin
+ import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
+ import org.scalajs.sbtplugin.cross._
+
++import scalanative.sbtplugin.ScalaNativePlugin
++
+ object build extends Build {
+   type Sett = Def.Setting[_]
+
+@@ -105,7 +107,7 @@ object build extends Build {
+   lazy val standardSettings: Seq[Sett] = Seq[Sett](
+     organization := "org.scalaz",
+
+-    scalaVersion := "2.10.6",
++    scalaVersion := "2.11.8",
+     crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.0-M4"),
+     resolvers ++= (if (scalaVersion.value.endsWith("-SNAPSHOT")) List(Opts.resolver.sonatypeSnapshots) else Nil),
+     fullResolvers ~= {_.filterNot(_.name == "jcenter")}, // https://github.com/sbt/sbt/issues/2217
+@@ -306,6 +308,7 @@ object build extends Build {
+       osgiExport("scalaz"),
+       OsgiKeys.importPackage := Seq("javax.swing;resolution:=optional", "*"))
+     .enablePlugins(sbtbuildinfo.BuildInfoPlugin)
++    .enablePlugins(ScalaNativePlugin)
+     .jsSettings(scalajsProjectSettings : _*)
+     .jvmSettings(
+       typeClasses := TypeClass.core
+diff --git a/project/plugins.sbt b/project/plugins.sbt
+index 1362568..ece054e 100644
+--- a/project/plugins.sbt
++++ b/project/plugins.sbt
+@@ -1,5 +1,7 @@
+ scalacOptions += "-deprecation"
+
++addSbtPlugin("org.scala-native" % "sbtplugin" % "0.1-SNAPSHOT")
++
+ addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.8")
+
+ addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.0.0")
