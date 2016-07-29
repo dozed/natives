@@ -34,7 +34,7 @@ object Main {
     //    `@java.net.URL`
     // val content = io.Source.fromURL("https://www.google.de", "ISO-8859-1").mkString
 
-    downloadFile(c"https://google.com", c"/home/stefan/test")
+    downloadFile(c"https://google.com", c"/tmp/test")
 
 
   }
