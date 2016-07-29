@@ -5,6 +5,7 @@ Contains sample code for Scala Native
   - `1-hello`: a hello world
   - `2-external`: external bindings
   - `3-library`: compile and use a Scala library with Scala Native
+  - `4-primitives`: primitives (CString, stackalloc, malloc)
 
 
 ## Docker build container
