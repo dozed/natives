@@ -1,6 +1,7 @@
 enablePlugins(ScalaNativePlugin)
 
-name := "hello"
+name := "sampleLibrary"
+
 description := "hello scala.native"
 
 scalaVersion := "2.11.8"
