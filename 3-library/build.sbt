@@ -15,5 +15,6 @@ lazy val root = project.in(file("."))
 nativeVerbose := true
 
 nativeClangOptions := Seq(
-  "-O2"
+  "-O2",
+  "-v"
 )
